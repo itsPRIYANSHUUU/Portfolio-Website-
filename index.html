@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Priyanshu Sharma — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg:        #07100D;
+    --bg2:       #0E1A15;
+    --bg3:       #142019;
+    --card:      #111E18;
+    --green:     #22C55E;
+    --green2:    #16A34A;
+    --greensoft: #86EFAC;
+    --gray:      #6B7280;
+    --gray2:     #9CA3AF;
+    --light:     #D1FAE5;
+    --white:     #F0FDF4;
+    --border:    rgba(34,197,94,.13);
+    --border2:   rgba(34,197,94,.22);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--gray2);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar{width:4px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--green2);border-radius:4px}
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before{
+    content:'';
+    position:fixed;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity:.4;pointer-events:none;z-index:0;
+  }
+
+  /* ─── UTILITY ─── */
+  .container{max-width:1140px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+  .green{color:var(--green)}
+  .tag{
+    display:inline-block;
+    font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--green);background:rgba(34,197,94,.1);
+    border:1px solid var(--border2);
+    padding:3px 10px;border-radius:20px;
+  }
+  section{padding:96px 0}
+
+  /* ─── HAIRLINE DIVIDER ─── */
+  .divider{
+    width:100%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--border2) 30%,var(--border2) 70%,transparent);
+    margin:0;
+  }
+
+  /* ─── NAV ─── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter:blur(18px);
+    background:rgba(7,16,13,.78);
+    border-bottom:1px solid var(--border);
+    padding:0 32px;
+    height:64px;display:flex;align-items:center;
+  }
+  .nav-inner{
+    max-width:1140px;width:100%;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-logo{
+    font-size:.95rem;font-weight:700;color:var(--white);
+    text-decoration:none;letter-spacing:-.01em;
+  }
+  .nav-logo span{color:var(--green)}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{
+    font-size:.8rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--gray2);text-decoration:none;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--green)}
+  .nav-cta{
+    font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--bg);background:var(--green);
+    padding:8px 20px;border-radius:4px;text-decoration:none;
+    transition:background .2s,transform .15s;
+  }
+  .nav-cta:hover{background:var(--greensoft);transform:translateY(-1px)}
+
+  /* ─── HERO ─── */
+  #hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding-top:64px;
+    position:relative;overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1fr 420px;
+    gap:64px;align-items:center;width:100%;
+  }
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:10px;margin-bottom:24px;
+  }
+  .hero-dot{
+    width:6px;height:6px;border-radius:50%;background:var(--green);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+  .hero-eyebrow span{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+  h1.hero-title{
+    font-size:clamp(2.4rem,5vw,3.8rem);
+    font-weight:800;
+    color:var(--white);
+    line-height:1.08;
+    letter-spacing:-.03em;
+    margin-bottom:20px;
+  }
+  h1.hero-title em{
+    font-style:normal;
+    background:linear-gradient(135deg,var(--green) 0%,var(--greensoft) 100%);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  }
+  .hero-sub{
+    font-size:1rem;font-weight:400;color:var(--gray2);
+    max-width:480px;line-height:1.75;margin-bottom:36px;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-primary{
+    font-family:'Poppins',sans-serif;
+    font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--bg);background:var(--green);
+    padding:13px 28px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;
+    transition:background .2s,transform .15s,box-shadow .2s;
+    box-shadow:0 0 0 0 rgba(34,197,94,0);
+  }
+  .btn-primary:hover{
+    background:var(--greensoft);transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(34,197,94,.22);
+  }
+  .btn-outline{
+    font-family:'Poppins',sans-serif;
+    font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--green);background:transparent;
+    padding:13px 28px;border-radius:4px;text-decoration:none;cursor:pointer;
+    border:1px solid var(--border2);
+    transition:background .2s,transform .15s;
+  }
+  .btn-outline:hover{background:rgba(34,197,94,.07);transform:translateY(-2px)}
+
+  /* terminal card */
+  .terminal{
+    background:var(--card);
+    border:1px solid var(--border2);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 0 1px rgba(34,197,94,.06);
+  }
+  .terminal-bar{
+    display:flex;align-items:center;gap:7px;
+    padding:12px 16px;background:var(--bg3);
+    border-bottom:1px solid var(--border);
+  }
+  .t-dot{width:10px;height:10px;border-radius:50%}
+  .t-dot.r{background:#FF5F57}.t-dot.y{background:#FEBC2E}.t-dot.g{background:#28C840}
+  .terminal-label{font-size:.7rem;font-weight:600;color:var(--gray);margin-left:auto;letter-spacing:.06em}
+  .terminal-body{padding:20px 20px 24px}
+  .t-line{font-size:.78rem;font-family:'Courier New',monospace;line-height:1.9;white-space:nowrap;overflow:hidden}
+  .t-line.comment{color:var(--gray)}
+  .t-line.keyword{color:#93C5FD}
+  .t-line.func{color:#FCA5A5}
+  .t-line.string{color:var(--greensoft)}
+  .t-line.value{color:#FCD34D}
+  .t-line.result{color:var(--green);font-weight:600}
+  .t-cursor{
+    display:inline-block;width:8px;height:14px;
+    background:var(--green);margin-left:2px;
+    animation:blink .9s step-end infinite;vertical-align:middle;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+  /* metric row */
+  .hero-metrics{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--border);
+    border:1px solid var(--border);border-radius:8px;
+    overflow:hidden;margin-top:20px;
+  }
+  .metric-cell{
+    background:var(--card);
+    padding:16px 14px;text-align:center;
+    transition:background .2s;
+  }
+  .metric-cell:hover{background:var(--bg3)}
+  .metric-val{font-size:1.35rem;font-weight:800;color:var(--white);letter-spacing:-.02em}
+  .metric-val span{color:var(--green)}
+  .metric-lbl{font-size:.65rem;font-weight:500;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+
+  /* glow blobs */
+  .blob{
+    position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;
+  }
+  .blob-1{width:400px;height:400px;background:rgba(34,197,94,.06);top:-80px;right:200px}
+  .blob-2{width:300px;height:300px;background:rgba(34,197,94,.04);bottom:100px;left:-80px}
+
+  /* ─── ABOUT ─── */
+  #about .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:72px;align-items:center;
+  }
+  .about-badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  h2.section-title{
+    font-size:clamp(1.8rem,3.5vw,2.6rem);
+    font-weight:800;color:var(--white);
+    letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;
+  }
+  .section-body{font-size:.95rem;line-height:1.85;color:var(--gray2);margin-bottom:16px}
+  .about-panel{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:10px;padding:28px;
+    display:flex;flex-direction:column;gap:20px;
+  }
+  .about-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .stat-block{
+    background:var(--bg3);border:1px solid var(--border);
+    border-radius:8px;padding:16px;
+    transition:border-color .2s,transform .2s;
+  }
+  .stat-block:hover{border-color:var(--border2);transform:translateY(-2px)}
+  .stat-num{font-size:1.5rem;font-weight:800;color:var(--white);letter-spacing:-.03em}
+  .stat-num span{color:var(--green)}
+  .stat-label{font-size:.7rem;font-weight:500;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+  .about-focus{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px}
+  .about-focus-label{font-size:.68rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+  .focus-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{
+    font-size:.72rem;font-weight:500;color:var(--gray2);
+    background:rgba(255,255,255,.04);border:1px solid var(--border);
+    padding:4px 10px;border-radius:20px;
+    transition:border-color .2s,color .2s;
+  }
+  .chip:hover{border-color:var(--border2);color:var(--greensoft)}
+
+  /* ─── SKILLS ─── */
+  #skills{background:var(--bg2)}
+  .skills-header{text-align:center;margin-bottom:56px}
+  .skills-header p{font-size:.95rem;color:var(--gray2);max-width:540px;margin:12px auto 0}
+  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .skill-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:10px;padding:24px 20px;
+    transition:border-color .25s,transform .25s,box-shadow .25s;
+    position:relative;overflow:hidden;
+  }
+  .skill-card::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(34,197,94,.04) 0%,transparent 60%);
+    opacity:0;transition:opacity .3s;
+  }
+  .skill-card:hover{
+    border-color:var(--border2);
+    transform:translateY(-4px);
+    box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 0 1px rgba(34,197,94,.1);
+  }
+  .skill-card:hover::before{opacity:1}
+  .skill-icon{
+    width:40px;height:40px;
+    background:rgba(34,197,94,.1);border:1px solid var(--border2);
+    border-radius:8px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:14px;font-size:1.1rem;
+  }
+  .skill-name{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:6px}
+  .skill-desc{font-size:.75rem;color:var(--gray);line-height:1.6;margin-bottom:14px}
+  .skill-bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+  .skill-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--green2),var(--green));transition:width 1s ease}
+  .skill-level{font-size:.65rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
+
+  /* ─── PROJECTS ─── */
+  .projects-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px}
+  .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .project-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;overflow:hidden;
+    transition:border-color .25s,transform .25s,box-shadow .25s;
+    position:relative;
+  }
+  .project-card:hover{
+    border-color:var(--border2);transform:translateY(-4px);
+    box-shadow:0 20px 50px rgba(0,0,0,.45),0 0 0 1px rgba(34,197,94,.1);
+  }
+  .project-card.featured{grid-column:1/-1}
+  .project-top{padding:24px 24px 0}
+  .project-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .project-num{
+    font-size:.68rem;font-weight:700;letter-spacing:.08em;
+    color:var(--green);font-family:'Courier New',monospace;
+  }
+  .project-domain{
+    font-size:.68rem;font-weight:600;color:var(--gray);
+    text-transform:uppercase;letter-spacing:.08em;
+  }
+  .project-title{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.3}
+  .project-desc{font-size:.82rem;color:var(--gray2);line-height:1.7;margin-bottom:16px}
+  .project-insights{
+    background:var(--bg3);border:1px solid var(--border);
+    border-radius:8px;padding:14px 16px;margin-bottom:16px;
+  }
+  .insight-label{font-size:.65rem;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+  .insight-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .insight-list li{
+    font-size:.77rem;color:var(--gray2);
+    display:flex;align-items:flex-start;gap:8px;
+  }
+  .insight-list li::before{content:'→';color:var(--green);flex-shrink:0;font-size:.8rem}
+  .project-stack{display:flex;flex-wrap:wrap;gap:6px;padding:0 24px 20px}
+  .stack-tag{
+    font-size:.67rem;font-weight:600;color:var(--gray2);
+    background:rgba(255,255,255,.04);border:1px solid var(--border);
+    padding:3px 9px;border-radius:3px;font-family:'Courier New',monospace;
+    letter-spacing:.04em;
+  }
+  .project-footer{
+    padding:14px 24px;
+    border-top:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .project-link{
+    font-size:.75rem;font-weight:600;color:var(--green);
+    text-decoration:none;letter-spacing:.04em;text-transform:uppercase;
+    display:flex;align-items:center;gap:6px;
+    transition:gap .2s;
+  }
+  .project-link:hover{gap:10px}
+
+  /* ─── WHY HIRE ME ─── */
+  #why{background:var(--bg2)}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+  .why-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:10px;padding:28px 24px;
+    transition:border-color .25s,transform .25s;
+  }
+  .why-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+  .why-num{
+    font-size:2.2rem;font-weight:800;
+    color:rgba(34,197,94,.12);letter-spacing:-.04em;
+    margin-bottom:12px;font-family:'Poppins',sans-serif;
+  }
+  .why-title{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:8px}
+  .why-body{font-size:.8rem;color:var(--gray2);line-height:1.7}
+
+  /* ─── EXPERIENCE ─── */
+  .exp-grid{display:grid;grid-template-columns:240px 1fr;gap:48px}
+  .exp-nav{display:flex;flex-direction:column;gap:4px}
+  .exp-nav-item{
+    font-size:.8rem;font-weight:500;color:var(--gray);
+    padding:10px 14px;border-radius:6px;cursor:pointer;
+    border-left:2px solid transparent;
+    transition:color .2s,background .2s,border-color .2s;
+  }
+  .exp-nav-item.active,
+  .exp-nav-item:hover{color:var(--white);background:var(--bg3);border-color:var(--green)}
+  .exp-panel{display:none}
+  .exp-panel.active{display:block}
+  .exp-role{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:4px}
+  .exp-org{font-size:.85rem;color:var(--green);font-weight:600;margin-bottom:4px}
+  .exp-date{font-size:.75rem;color:var(--gray);margin-bottom:18px}
+  .exp-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .exp-list li{
+    font-size:.85rem;color:var(--gray2);line-height:1.7;
+    display:flex;gap:10px;
+  }
+  .exp-list li::before{content:'▸';color:var(--green);flex-shrink:0}
+  .exp-certs{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+  .cert-badge{
+    font-size:.7rem;font-weight:600;color:var(--greensoft);
+    background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);
+    padding:4px 10px;border-radius:20px;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact{
+    background:linear-gradient(135deg,var(--bg) 0%,var(--bg3) 100%);
+    position:relative;overflow:hidden;
+  }
+  #contact::before{
+    content:'';position:absolute;
+    top:-120px;right:-80px;
+    width:500px;height:500px;
+    background:radial-gradient(circle,rgba(34,197,94,.07) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .contact-inner{max-width:640px;margin:0 auto;text-align:center}
+  .contact-inner .section-title{margin-bottom:12px}
+  .contact-inner p{font-size:.95rem;color:var(--gray2);margin-bottom:36px;line-height:1.8}
+  .contact-cards{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+  .contact-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:8px;padding:14px 20px;
+    display:flex;align-items:center;gap:10px;
+    text-decoration:none;
+    transition:border-color .2s,transform .2s;
+  }
+  .contact-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+  .contact-card-icon{font-size:1rem}
+  .contact-card-text{display:flex;flex-direction:column}
+  .contact-card-label{font-size:.65rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.08em}
+  .contact-card-val{font-size:.8rem;font-weight:600;color:var(--white)}
+
+  /* ─── FOOTER ─── */
+  footer{
+    padding:24px 32px;
+    border-top:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    position:relative;z-index:1;
+  }
+  footer .logo{font-size:.85rem;font-weight:700;color:var(--white)}
+  footer .logo span{color:var(--green)}
+  footer p{font-size:.73rem;color:var(--gray)}
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .fade-in.visible{opacity:1;transform:translateY(0)}
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .about-grid,.exp-grid{grid-template-columns:1fr}
+    .skills-grid{grid-template-columns:repeat(2,1fr)}
+    .projects-grid,.why-grid{grid-template-columns:1fr}
+    .project-card.featured{grid-column:auto}
+    .nav-links{display:none}
+  }
+  @media(max-width:600px){
+    .container{padding:0 20px}
+    section{padding:64px 0}
+    .skills-grid{grid-template-columns:1fr 1fr}
+    .hero-metrics{grid-template-columns:repeat(3,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">PK<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:itspriyanshuuu@gmail.com" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="hero-dot"></div>
+          <span>Open to Work — Data Analyst Roles</span>
+        </div>
+        <h1 class="hero-title">
+          Raw Data.<br/>
+          Clear <em>Decisions.</em><br/>
+          Business Impact.
+        </h1>
+        <p class="hero-sub">
+          I'm Priyanshu Sharma — a Data Analyst with a foundation in Accounting &amp; Finance,
+          specializing in SQL, Python, Power BI, and Excel. I build dashboards, surface KPIs,
+          and translate data into decisions that move business forward.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View Case Studies</a>
+          <a href="#contact" class="btn-outline">Get In Touch</a>
+        </div>
+      </div>
+      <div>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="t-dot r"></div>
+            <div class="t-dot y"></div>
+            <div class="t-dot g"></div>
+            <span class="terminal-label">analysis.sql</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line comment">-- UPI Payment Risk Analysis</div>
+            <div class="t-line keyword">WITH <span style="color:#FCD34D">monthly_risk</span> AS (</div>
+            <div class="t-line keyword">&nbsp;&nbsp;SELECT</div>
+            <div class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#FCA5A5">month</span>, <span style="color:#FCA5A5">total_txn</span>,</div>
+            <div class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#FCA5A5">failure_rate</span>,</div>
+            <div class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">ROUND</span>((<span style="color:#FCA5A5">failure_rate</span> -</div>
+            <div class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">AVG</span>(<span style="color:#FCA5A5">failure_rate</span>)</div>
+            <div class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">OVER</span>()) / <span style="color:#93C5FD">STDDEV</span>(<span style="color:#FCA5A5">failure_rate</span>)</div>
+            <div class="t-line">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">OVER</span>(), <span style="color:#86EFAC">3</span>) <span style="color:#FCD34D">AS z_score</span></div>
+            <div class="t-line keyword">&nbsp;&nbsp;FROM <span style="color:#FCA5A5">npci_upi_data</span></div>
+            <div class="t-line keyword">)</div>
+            <div class="t-line keyword">SELECT <span style="color:#FCD34D">*</span> FROM <span style="color:#FCA5A5">monthly_risk</span></div>
+            <div class="t-line keyword">WHERE <span style="color:#FCD34D">ABS</span>(<span style="color:#FCA5A5">z_score</span>) &gt; <span style="color:#86EFAC">2</span>;</div>
+            <div class="t-line result" style="margin-top:10px">▶ 3 anomaly months detected<span class="t-cursor"></span></div>
+          </div>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-cell">
+            <div class="metric-val">5<span>+</span></div>
+            <div class="metric-lbl">Live Projects</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-val">10<span>yr</span></div>
+            <div class="metric-lbl">NPCI Data</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-val">4<span>+</span></div>
+            <div class="metric-lbl">Certifications</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-in">
+        <div class="about-badge-row">
+          <span class="tag">About Me</span>
+        </div>
+        <h2 class="section-title">Finance Brain.<br/>Analytics Toolkit.</h2>
+        <p class="section-body">
+          I hold a B.Com Honours in Accounts &amp; Finance from Lalit Narayan Mithila University
+          and am completing a Data Analytics certification at Aptech Learning. My dual background
+          — financial theory plus technical analysis — means I don't just build dashboards.
+          I understand the business context behind every metric.
+        </p>
+        <p class="section-body">
+          My focus is BFSI and fintech: credit risk, UPI transaction intelligence, customer churn,
+          and KPI reporting. I work with official data sources (RBI, NPCI, SEBI) and translate
+          complex findings into clear, actionable insights for business teams.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="mailto:itspriyanshuuu@gmail.com" class="btn-primary" style="font-size:.75rem;padding:10px 20px">Contact Me</a>
+          <a href="https://linkedin.com/in/priyanshu-sharma-0323403a6" target="_blank" class="btn-outline" style="font-size:.75rem;padding:10px 20px">LinkedIn</a>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="about-panel">
+          <div class="about-stat-row">
+            <div class="stat-block">
+              <div class="stat-num">B.Com<span>.</span></div>
+              <div class="stat-label">Accounts &amp; Finance Hons.</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">BFSI<span>↗</span></div>
+              <div class="stat-label">Primary Target Domain</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">SQL<span>✓</span></div>
+              <div class="stat-label">HackerRank Advanced</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">5<span>+</span></div>
+              <div class="stat-label">GitHub Projects</div>
+            </div>
+          </div>
+          <div class="about-focus">
+            <div class="about-focus-label">Domain Focus Areas</div>
+            <div class="focus-chips">
+              <span class="chip">Credit Risk</span>
+              <span class="chip">UPI Analytics</span>
+              <span class="chip">Customer Churn</span>
+              <span class="chip">KPI Dashboards</span>
+              <span class="chip">Financial Reporting</span>
+              <span class="chip">Business Intelligence</span>
+              <span class="chip">Anomaly Detection</span>
+              <span class="chip">Data Cleaning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="skills-header fade-in">
+      <span class="tag">Technical Stack</span>
+      <h2 class="section-title" style="margin-top:14px">Tools I Use to<br/>Turn Data Into Decisions</h2>
+      <p>Every tool selected because it solves a real business problem — not for the sake of adding to a list.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">SQL / PostgreSQL</div>
+        <div class="skill-desc">Window functions, CTEs, subqueries, joins, aggregations, and performance tuning for large-scale BFSI datasets.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="92" style="width:0%"></div></div>
+        <div class="skill-level">Advanced · HackerRank Certified</div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Power BI</div>
+        <div class="skill-desc">DAX measures, calculated columns, drill-through reports, KPI cards, and executive-ready dashboards.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85" style="width:0%"></div></div>
+        <div class="skill-level">Proficient · Simplilearn Certified</div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python (Pandas)</div>
+        <div class="skill-desc">Data cleaning, transformation, EDA, Z-score anomaly detection, and Matplotlib visualisations.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="80" style="width:0%"></div></div>
+        <div class="skill-level">Proficient · Simplilearn Certified</div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">📋</div>
+        <div class="skill-name">Excel</div>
+        <div class="skill-desc">XLOOKUP, SUMIFS, IFS, pivot tables, dynamic arrays, and financial modelling for business reporting.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88" style="width:0%"></div></div>
+        <div class="skill-level">Advanced</div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🏦</div>
+        <div class="skill-name">BFSI Domain</div>
+        <div class="skill-desc">Credit risk metrics, UPI payment flows, loan portfolio analysis, NPA concepts, and RBI data interpretation.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="82" style="width:0%"></div></div>
+        <div class="skill-level">Strong Domain Foundation</div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">📈</div>
+        <div class="skill-name">Statistics &amp; Analytics</div>
+        <div class="skill-desc">Descriptive stats, Z-score detection, correlation analysis, trend identification, and hypothesis framing.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="75" style="width:0%"></div></div>
+        <div class="skill-level">Intermediate</div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🔄</div>
+        <div class="skill-name">Data Pipelines</div>
+        <div class="skill-desc">ETL thinking, data wrangling from multiple sources (RBI, NPCI, SEBI), and building clean analysis-ready datasets.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="78" style="width:0%"></div></div>
+        <div class="skill-level">Proficient</div>
+      </div>
+      <div class="skill-card fade-in">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-name">AI Fluency</div>
+        <div class="skill-desc">Prompt engineering, AI-assisted analysis workflows, IBM AI Fundamentals certified — stays ahead of the curve.</div>
+        <div class="skill-bar"><div class="skill-fill" data-width="72" style="width:0%"></div></div>
+        <div class="skill-level">IBM SkillBuild Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-header fade-in">
+      <div>
+        <span class="tag">Case Studies</span>
+        <h2 class="section-title" style="margin-top:14px">Real Problems.<br/>Real Data. Real Answers.</h2>
+      </div>
+      <a href="https://github.com/itsPRIYANSHUUU" target="_blank" class="btn-outline" style="font-size:.75rem;padding:10px 18px;flex-shrink:0">View GitHub →</a>
+    </div>
+    <div class="projects-grid">
+      <!-- Featured -->
+      <div class="project-card featured fade-in">
+        <div class="project-top">
+          <div class="project-meta">
+            <span class="project-num">01 —</span>
+            <span class="project-domain">BFSI · Payments · Risk Intelligence</span>
+            <span class="tag" style="margin-left:auto">Featured</span>
+          </div>
+          <div class="project-title">UPI Payment Risk Intelligence System</div>
+          <div class="project-desc">
+            Analysed 10 years of NPCI aggregate UPI transaction data (2016–2025) to build a macro-level
+            payment risk monitoring framework. Applied statistical anomaly detection to surface failure-rate spikes,
+            seasonal patterns, and volume outliers that correlate with systemic risk events.
+          </div>
+          <div class="project-insights">
+            <div class="insight-label">Key Business Insights</div>
+            <ul class="insight-list">
+              <li>Identified 3 anomalous months via Z-score analysis where failure rates exceeded 2 standard deviations — flagging periods of systemic stress in the UPI ecosystem</li>
+              <li>Mapped transaction volume growth curve from ₹1L Cr/month (2018) to ₹21L Cr/month (2024) — quantifying the 21× scale-up challenge for risk infrastructure</li>
+              <li>Detected seasonal compression in Q4 (Jan–Mar) failure rates, suggesting year-end compliance-driven improvements in bank settlement systems</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Z-Score</span>
+          <span class="stack-tag">Matplotlib</span>
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">NPCI Data</span>
+          <span class="stack-tag">Time-Series</span>
+        </div>
+        <div class="project-footer">
+          <span style="font-size:.75rem;color:var(--gray)">Data Source: NPCI Official Monthly Reports</span>
+          <a href="https://github.com/itsPRIYANSHUUU" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="project-card fade-in">
+        <div class="project-top">
+          <div class="project-meta">
+            <span class="project-num">02 —</span>
+            <span class="project-domain">BFSI · Credit · Risk</span>
+          </div>
+          <div class="project-title">Credit Risk Analysis &amp; Default Prediction</div>
+          <div class="project-desc">
+            Built an end-to-end credit risk assessment model using RBI-published loan portfolio data.
+            Segmented borrowers by NPA risk tier and built a scoring logic to prioritise high-default segments.
+          </div>
+          <div class="project-insights">
+            <div class="insight-label">Key Insights</div>
+            <ul class="insight-list">
+              <li>Identified top 3 borrower segments contributing to 68% of NPA volume</li>
+              <li>Proposed risk-tier segmentation to reduce manual underwriting review workload</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">RBI Data</span>
+        </div>
+        <div class="project-footer">
+          <span style="font-size:.75rem;color:var(--gray)">Source: RBI DBIE Portal</span>
+          <a href="https://github.com/itsPRIYANSHUUU" target="_blank" class="project-link">View →</a>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="project-card fade-in">
+        <div class="project-top">
+          <div class="project-meta">
+            <span class="project-num">03 —</span>
+            <span class="project-domain">Fintech · Retention · Churn</span>
+          </div>
+          <div class="project-title">Customer Churn Intelligence — Fintech</div>
+          <div class="project-desc">
+            Modelled customer retention patterns for a fintech lending product. Identified the top behavioural
+            indicators of churn using cohort analysis and segmentation, enabling targeted retention interventions.
+          </div>
+          <div class="project-insights">
+            <div class="insight-label">Key Insights</div>
+            <ul class="insight-list">
+              <li>Churn probability 3× higher for customers with 0 transactions in months 2–3</li>
+              <li>Early repayment correlated with 40% lower churn — flagged as retention signal</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Pandas</span>
+          <span class="stack-tag">Cohort Analysis</span>
+          <span class="stack-tag">Excel</span>
+        </div>
+        <div class="project-footer">
+          <span style="font-size:.75rem;color:var(--gray)">Synthetic + Public Dataset</span>
+          <a href="https://github.com/itsPRIYANSHUUU" target="_blank" class="project-link">View →</a>
+        </div>
+      </div>
+
+      <!-- P4 -->
+      <div class="project-card fade-in">
+        <div class="project-top">
+          <div class="project-meta">
+            <span class="project-num">04 —</span>
+            <span class="project-domain">E-Commerce · Operations</span>
+          </div>
+          <div class="project-title">E-Commerce Failure &amp; Delay Analysis</div>
+          <div class="project-desc">
+            Diagnosed order failure, delay, and cancellation patterns across an e-commerce dataset.
+            Delivered root-cause findings and a Power BI dashboard highlighting operational bottlenecks by region and category.
+          </div>
+          <div class="project-insights">
+            <div class="insight-label">Key Insights</div>
+            <ul class="insight-list">
+              <li>Payment gateway failures accounted for 34% of all order drop-offs</li>
+              <li>Tier-2 cities showed 2.1× higher delivery delay rates vs. metro regions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Power BI</span>
+          <span class="stack-tag">Excel</span>
+          <span class="stack-tag">Root Cause Analysis</span>
+        </div>
+        <div class="project-footer">
+          <span style="font-size:.75rem;color:var(--gray)">Kaggle Dataset</span>
+          <a href="https://github.com/itsPRIYANSHUUU" target="_blank" class="project-link">View →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY HIRE ME -->
+<section id="why">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;max-width:580px;margin:0 auto">
+      <span class="tag">Value Proposition</span>
+      <h2 class="section-title" style="margin-top:14px">Why I'm Different<br/>From Typical Fresher Candidates</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="why-num">01</div>
+        <div class="why-title">Domain-First Thinking</div>
+        <div class="why-body">I come with a Finance Honours background. I don't just run queries — I understand credit cycles, NPA classification, payment flows, and what a KPI actually means to a business stakeholder.</div>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-num">02</div>
+        <div class="why-title">Official Data Sources</div>
+        <div class="why-body">My projects use RBI, NPCI, and SEBI data — not Kaggle toy datasets. This demonstrates I can source, clean, and interpret real regulatory and institutional data that financial organisations actually work with.</div>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-num">03</div>
+        <div class="why-title">End-to-End Delivery</div>
+        <div class="why-body">From raw messy data to a clean report or Power BI dashboard — I handle the full pipeline. Data sourcing, cleaning, transformation, analysis, visualisation, and business interpretation. No handoffs needed.</div>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-num">04</div>
+        <div class="why-title">SQL at Depth</div>
+        <div class="why-body">HackerRank Advanced SQL certified. I write production-quality queries: window functions, CTEs, Z-score logic in SQL, multi-condition JOINs — not just SELECT * FROM table basics.</div>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-num">05</div>
+        <div class="why-title">Insight-Led Communication</div>
+        <div class="why-body">I present findings in business language — not just charts and tables. Every analysis ends with a "so what?" that a manager or executive can act on. That's rare at fresher level.</div>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-num">06</div>
+        <div class="why-title">AI-Literate Analyst</div>
+        <div class="why-body">IBM AI Fundamentals certified. I use AI tools to accelerate analysis workflows — prompt engineering, AI-assisted EDA, and intelligent tool chaining. Ready for the modern data team environment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE / EDUCATION -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:48px">
+      <span class="tag">Background</span>
+      <h2 class="section-title" style="margin-top:14px">Education &amp; Certifications</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-nav">
+        <div class="exp-nav-item active" onclick="switchExp(this,'e1')">B.Com Honours</div>
+        <div class="exp-nav-item" onclick="switchExp(this,'e2')">Aptech Learning</div>
+        <div class="exp-nav-item" onclick="switchExp(this,'e3')">Certifications</div>
+        <div class="exp-nav-item" onclick="switchExp(this,'e4')">Self-Built Projects</div>
+      </div>
+      <div>
+        <div class="exp-panel active" id="e1">
+          <div class="exp-role">B.Com — Accounts &amp; Finance Honours</div>
+          <div class="exp-org">Lalit Narayan Mithila University</div>
+          <div class="exp-date">2021 – 2025 · Darbhanga, Bihar</div>
+          <ul class="exp-list">
+            <li>Graduated with specialisation in Accounts, Finance, Taxation, and Business Economics</li>
+            <li>Strong foundation in financial statements, cost accounting, and banking concepts directly applicable to BFSI analytics roles</li>
+            <li>Complemented academic coursework with self-directed learning in SQL, Python, and data analysis tools throughout degree tenure</li>
+          </ul>
+        </div>
+        <div class="exp-panel" id="e2">
+          <div class="exp-role">Data Analytics Certification Program</div>
+          <div class="exp-org">Aptech Learning, Konnagar</div>
+          <div class="exp-date">2025 – Present · West Bengal</div>
+          <ul class="exp-list">
+            <li>Intensive program covering the full analytics stack: SQL, Excel, Python, Power BI, and Statistics</li>
+            <li>Practical assignments on real-world datasets with emphasis on business reporting and dashboard creation</li>
+            <li>Developed project-based portfolio work alongside coursework to demonstrate applied skills</li>
+          </ul>
+        </div>
+        <div class="exp-panel" id="e3">
+          <div class="exp-role">Professional Certifications</div>
+          <div class="exp-org">HackerRank · Simplilearn · IBM SkillBuild</div>
+          <div class="exp-date">2024 – 2025</div>
+          <ul class="exp-list">
+            <li>HackerRank: SQL Basic, Intermediate, and Advanced — covering complex queries, optimisation, and window functions</li>
+            <li>Simplilearn: Power BI for Business Intelligence — DAX, reports, and dashboard publishing</li>
+            <li>Simplilearn: Python for Data Science — Pandas, NumPy, Matplotlib</li>
+            <li>IBM SkillBuild: Data Analytics Fundamentals and AI Fundamentals</li>
+          </ul>
+          <div class="exp-certs">
+            <span class="cert-badge">SQL Advanced</span>
+            <span class="cert-badge">Power BI</span>
+            <span class="cert-badge">Python DS</span>
+            <span class="cert-badge">IBM Data Analytics</span>
+            <span class="cert-badge">IBM AI Fundamentals</span>
+          </div>
+        </div>
+        <div class="exp-panel" id="e4">
+          <div class="exp-role">Independent Portfolio Projects</div>
+          <div class="exp-org">GitHub: itsPRIYANSHUUU</div>
+          <div class="exp-date">Jan 2026 – Present</div>
+          <ul class="exp-list">
+            <li>UPI Payment Risk Intelligence — 10-year NPCI macro data, Z-score anomaly detection, Python pipeline</li>
+            <li>Credit Risk Analysis — RBI loan portfolio data, NPA segmentation, Power BI dashboard</li>
+            <li>Customer Churn Model — Fintech cohort analysis, retention signal identification</li>
+            <li>E-Commerce Failure Analysis — SQL root cause analysis, operational bottleneck dashboard</li>
+            <li>Hospital Readmission Analysis &amp; YouTube Trending Algorithm Analysis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner fade-in">
+      <span class="tag">Let's Connect</span>
+      <h2 class="section-title" style="margin-top:14px">Looking for a Data Analyst<br/>Who Understands Your Business?</h2>
+      <p>
+        I'm actively targeting Data Analyst and Business Analyst roles in BFSI and fintech.
+        If you're hiring — or know someone who is — I'd like to connect.
+      </p>
+      <div class="contact-cards">
+        <a href="mailto:itspriyanshuuu@gmail.com" class="contact-card">
+          <span class="contact-card-icon">✉️</span>
+          <div class="contact-card-text">
+            <span class="contact-card-label">Email</span>
+            <span class="contact-card-val">itspriyanshuuu@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/priyanshu-sharma-0323403a6" target="_blank" class="contact-card">
+          <span class="contact-card-icon">💼</span>
+          <div class="contact-card-text">
+            <span class="contact-card-label">LinkedIn</span>
+            <span class="contact-card-val">priyanshu-sharma</span>
+          </div>
+        </a>
+        <a href="https://github.com/itsPRIYANSHUUU" target="_blank" class="contact-card">
+          <span class="contact-card-icon">🐙</span>
+          <div class="contact-card-text">
+            <span class="contact-card-label">GitHub</span>
+            <span class="contact-card-val">itsPRIYANSHUUU</span>
+          </div>
+        </a>
+        <a href="tel:8102858878" class="contact-card">
+          <span class="contact-card-icon">📱</span>
+          <div class="contact-card-text">
+            <span class="contact-card-label">Phone</span>
+            <span class="contact-card-val">+91 8102858878</span>
+          </div>
+        </a>
+      </div>
+      <a href="mailto:itspriyanshuuu@gmail.com" class="btn-primary" style="display:inline-block">Send Me a Message →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Priyanshu<span>.</span>Sharma</div>
+  <p>Data Analyst · BFSI &amp; Fintech · Hindmotor, West Bengal</p>
+  <p style="font-size:.7rem;color:var(--gray)">priyanshuu.in</p>
+</footer>
+
+<script>
+  // ── SCROLL FADE IN ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible') }
+    })
+  }, {threshold:.12})
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el))
+
+  // ── SKILL BARS ANIMATE ──
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%'
+        })
+      }
+    })
+  }, {threshold:.3})
+  document.querySelectorAll('#skills').forEach(el => barObserver.observe(el))
+
+  // ── EXP TABS ──
+  function switchExp(el, id){
+    document.querySelectorAll('.exp-nav-item').forEach(i => i.classList.remove('active'))
+    document.querySelectorAll('.exp-panel').forEach(p => p.classList.remove('active'))
+    el.classList.add('active')
+    document.getElementById(id).classList.add('active')
+  }
+
+  // ── ACTIVE NAV ON SCROLL ──
+  const sections = document.querySelectorAll('section[id]')
+  const navLinks = document.querySelectorAll('.nav-links a')
+  window.addEventListener('scroll', () => {
+    let current = ''
+    sections.forEach(s => {
+      if(window.scrollY >= s.offsetTop - 80) current = s.id
+    })
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#'+current
+        ? 'var(--green)' : ''
+    })
+  })
+</script>
+</body>
+</html>
